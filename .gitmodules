@@ -1,0 +1,3 @@
+[submodule "CS61C_basics"]
+	path = CS61C_basics
+	url = https://github.com/MotingLiuu/CS61C_basics.git
