@@ -3,13 +3,11 @@
 **Executable file** is `a.out`
 
 ```bash
-$ gcc -o program program.c
-$ ./program
+gcc -o program program.c
+./program
 ```
 
 `-o` used to specify the name of executable file that `gcc` creates.
-
-
 
 **Debuging tools**: `cgdb` and `valgrind`
 
@@ -22,15 +20,6 @@ int main(int argc, char *argv[]) {
     int *p = &count;
 
     for (i = 0; i < 10; i++) {
-        (*p)++; // Do you understand this line of code and all the other permutations of the operators? ;)
-    }
-
-    printf("Thanks for waddling through this program. Have a nice day.");
-    return 0;
-}
-```
-
-gdb will get into the printf to execute line by line when using `step`, but execute all of the printf when using `next`
 
 1. Set the arguments that will be passed to the program when it’s run
 
@@ -39,22 +28,11 @@ set args input.txt output.txt
 ```
 
 2. Create a breakpoint
-
-```bash
 break mian
 break hello.c:10
+
 ```
 
-3. Continue the program after stopping at a breakpoint
-
-```bash
-continue
-c
-```
-
-4. Print the value of a variable( print <expression>
-
-```bash
 print x
 print 1 + 2
 ```
@@ -79,8 +57,6 @@ quit
 
 `Ctrl+D`
 
-
-
 **Use redirection in C for file input**
 
 ```bash
@@ -98,15 +74,6 @@ int main (int argc, char *argv[])
     fgets(buffer, BUFFERSIZE , stdin);
     printf("Read: %s", buffer);
     return 0;
-}
-```
-
-
-
-## Valgrind
-
-```c
-#include <stdio.h>
 int main() {
     int a[5] = {1, 2, 3, 4, 5}; // int array
     unsigned total = 0; 
@@ -114,8 +81,6 @@ int main() {
         total += a[j];
     }
     printf("size of a is %d\n", sizeof(a));
-    printf("sum of array is %d\n", total);
-}
 ```
 
 The output of `Valgrind ./no_segfault.c` would be
@@ -168,11 +133,7 @@ sum of array is 32114780
 ==58451== ERROR SUMMARY: 19 errors from 5 contexts (suppressed: 0 from 0)
 ```
 
-When checking for the propagation of "uninitialized values," Valgrind typically only reports the **first point where the dirty data causes a problem**—such as in a conditional check, output operation, or calculation—**if the** **`--track-origins=yes`** **--track-origins=yes** **--track-origins=yes** **--track-origins=yes** **--track-origins=yes flag is not used**.
-
-
-
-
+When checking for the propagation of "uninitialized values," Valgrind typically only reports the **first point where the dirty data causes a problem**—such as in a conditional check, output operation, or calculation—**if the** **`--track-origins=yes`** **--track-origins=yes** **--track-origins=yes** **--track-origins=yes** **--track-origins=yes** **--track-origins=yes flag is not used**.
 
 # Arrays and Pointers
 
@@ -200,11 +161,7 @@ void bar(int a[]) {
 
 **Any name parameter is a pointer**: For efficiency and flexibility, when passing arrays as function parameters in C, only a pointer is actually passed, rather than copying the entire array.
 
-
-
 The unary operator `*` is the **indirection** or **dereferencing** operator; When applied to a pointer, it accesses the object the pointer points to.
-
-
 
 C passes arguments to functions by value, no direct way for the called function to alter a variable in the calling function.
 
@@ -217,13 +174,9 @@ void swap(int *px, int *py) {
 }
 ```
 
-
-
 **Difference between an array name and a pointer**:
 
 Pointer is a variable `pa = a` and `pa++` are legal. But an array name is not a variable `a=pa` and `a++`  are illegal.
-
-
 
 There is an important difference between these definition
 
@@ -237,8 +190,6 @@ char *pmessage = "now is the time";    /* 一个指针 */
 `pmessage` is a pointer, may subsequently be modified to point elsewhere.
 
 ![](4.png)
-
-
 
 **Multi-dimensional Arrays**
 
@@ -256,8 +207,6 @@ char *name[] = { "Illegal month", "Jan", "Feb", "Mar" };
 ```c
 char aname[][15] = { "Illegal month", "Jan", "Feb", "Mar" };
 ```
-
-
 
 # Structure
 
@@ -296,8 +245,6 @@ struct key {
 };
 ```
 
-
-
 The structure operator `.` and `->` together with `()`  for function calls and `[]` for subscripts are at the top of the precedence hierarchy and bind very tightly.
 
 ```c
@@ -310,8 +257,6 @@ struct {
 
 `++p->len` increments `len` not `p`, the implied parenthesization is `++(p->len)`
 
-
-
 ```c
 typedef struct { // typedef struct最后面跟的才是别名，而普通struct后面跟的是变量的声明
     int a;
@@ -320,8 +265,6 @@ typedef struct { // typedef struct最后面跟的才是别名，而普通struct�
 
 MyStruct arr[10];
 ```
-
-
 
 The recursive declaration of a node is correct, but it is necessary to use pointer.
 
@@ -333,8 +276,6 @@ struct tnode { /* the tree node: */
     struct tnode *right; /* right child */
 };
 ```
-
-
 
 **Union**
 
@@ -388,8 +329,6 @@ union u_tag u;
 u.fval = 3.14f;  //初始化其他成员，必须先声明再赋值
 ```
 
-
-
 **Bit-field**
 
 ```c
@@ -414,8 +353,6 @@ struct {
 status.power_on = 1; // 开
 status.error = 0;    // 清除错误
 ```
-
-
 
 # Command-line
 
@@ -455,8 +392,6 @@ int main(int argc, char *argv[]) {
 A segmentation fault only occurs if the memory you access happens to fall within a region that the operating system prohibits access to, such as an illegal address (unmapped virtual memory).
 
 However, for small arrays, the memory beyond them often still lies within the stack space—containing other variables, return addresses, etc.—so the program may not crash immediately.
-
-
 
 `++p` and `p++`
 
@@ -499,8 +434,6 @@ The two's complement representes from $-2^{n-1}$to $2^{n-1}-1$
 
 **The name of Two's complement**: unsigned sum of n-bit number and its negative is $2^{n}$
 
-
-
 # Memory Management
 
 ```c
@@ -524,8 +457,6 @@ void foo() {
 ![](tmpF058.png)
 
 The content `p` pointing to is `1` and address `p` pointing to is `40` while the address of `p` is `12`
-
-
 
 ## Linked List
 
