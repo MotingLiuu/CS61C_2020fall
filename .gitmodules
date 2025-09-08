@@ -1,3 +1,6 @@
 [submodule "CS61C_basics"]
 	path = CS61C_basics
 	url = https://github.com/MotingLiuu/CS61C_basics.git
+[submodule "cs61c-sp25-lab-starter"]
+	path = cs61c-sp25-lab-starter
+	url = https://github.com/MotingLiuu/cs61c-sp25-lab-starter.git
