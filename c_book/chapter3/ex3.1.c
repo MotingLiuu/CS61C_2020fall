@@ -1,8 +1,13 @@
 #include <stdio.h>
+#include <time.h>
 
 #define EXIT_SUCCESS 0
 
 int binsearch(int x, int v[], int n) {
+  clock_t start, end;
+  double cpu_time_used;
+
+  start = clock();
   int low, mid, high;
   low = 0;
   high = n - 1;
@@ -14,6 +19,9 @@ int binsearch(int x, int v[], int n) {
       low = mid + 1;
     }
   }
+  end = clock();
+  cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+  printf("%6.5f\n", cpu_time_used);
   if (v[mid] == x) {
     return mid;
   } else {
