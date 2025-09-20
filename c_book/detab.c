@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     } else {
       putchar(c);
     }
-  }
+  } 
 
   return EXIT_SUCCESS;
 }
