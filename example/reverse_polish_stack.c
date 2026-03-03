@@ -20,3 +20,28 @@ double pop(void) {
     return 0.0; // Return a default value
   }
 }
+
+void print_top(void) { printf("top: %f\n", stack[stack_top - 1]); }
+
+void duplicate_top(void) {
+  if (stack_top < MAX_STACK_SIZE) {
+    double top_value = pop();
+    push(top_value);
+    push(top_value);
+  } else {
+    printf("Stack overflow\n");
+  }
+}
+
+void swap_top(void) {
+  if (stack_top >= 2) {
+    double top1 = pop();
+    double top2 = pop();
+    push(top1);
+    push(top2);
+  } else {
+    printf("Not enough elements to swap\n");
+  }
+}
+
+void clear_stack(void) { stack_top = 0; }

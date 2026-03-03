@@ -1,7 +1,7 @@
 #define BUFSIZE 100
 #include <stdio.h>
 
-char buf[BUFSIZE]; // buffer for ungetch
+int buf[BUFSIZE]; // buffer for ungetch
 int bufp = 0;      // next free position in buf
 
 int getch(void) { return (bufp > 0) ? buf[--bufp] : getchar(); }
