@@ -61,6 +61,14 @@ game_t *create_default_game() {
 /* Task 2 */
 void free_game(game_t *game) {
   // TODO: Implement this function.
+  unsigned int game_row;
+  game_row = game->num_rows;
+  for (int i=0; i<game_row; i++) {
+    free(game->board[i]);
+  }
+  free(game->board);
+  free(game->snakes);
+  free(game);
   return;
 }
 
