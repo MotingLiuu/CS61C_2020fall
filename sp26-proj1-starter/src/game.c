@@ -75,6 +75,13 @@ void free_game(game_t *game) {
 /* Task 3 */
 void print_board(game_t *game, FILE *fp) {
   // TODO: Implement this function.
+  if (NULL == fp) {
+    return;
+  }
+  unsigned int num_rows = game->num_rows;
+  for (int i=0; i<num_rows; i++) {
+    fprintf(fp, (game->board)[i]);
+  }
   return;
 }
 
