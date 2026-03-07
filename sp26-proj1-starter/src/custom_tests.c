@@ -98,36 +98,263 @@ bool test_is_vowel() {
 
 bool test_is_tail() {
   // TODO: Implement this function.
+  if (!assert_equals_bool("w", true, is_tail('w'))) {
+    return false;
+  }
+  if (!assert_equals_bool("a", true, is_tail('a'))) {
+    return false;
+  }
+  if (!assert_equals_bool("s", true, is_tail('s'))) {
+    return false;
+  }
+  if (!assert_equals_bool("d", true, is_tail('d'))) {
+    return false;
+  }
+
+  if (!assert_equals_bool("W", false, is_tail("W"))) {
+    return false;
+  }
+  if (!assert_equals_bool("A", false, is_tail("A"))) {
+    return false;
+  }
+  if (!assert_equals_bool("S", false, is_tail("S"))) {
+    return false;
+  }
+  if (!assert_equals_bool("D", false, is_tail("D"))) {
+    return false;
+  }
+  
+  if (!assert_equals_bool("^", false, is_tail("^"))) {
+    return false;
+  }
+  if (!assert_equals_bool("<", false, is_tail("<"))) {
+    return false;
+  }
+  if (!assert_equals_bool("v", false, is_tail("v"))) {
+    return false;
+  }
+  if (!assert_equals_bool(">", false, is_tail(">"))) {
+    return false;
+  }
+
   return true;
 }
 
 bool test_is_head() {
   // TODO: Implement this function.
+  if (!assert_equals_bool("W", true, is_head('W'))) {
+    return false;
+  }
+  if (!assert_equals_bool("A", true, is_head('A'))) {
+    return false;
+  }
+  if (!assert_equals_bool("S", true, is_head('S'))) {
+    return false;
+  }
+  if (!assert_equals_bool("D", true, is_head('D'))) {
+    return false;
+  }
+
+  if (!assert_equals_bool("w", false, is_head('w'))) {
+    return false;
+  }
+  if (!assert_equals_bool("a", false, is_head('a'))) {
+    return false;
+  }
+  if (!assert_equals_bool("s", false, is_head('s'))) {
+    return false;
+  }
+  if (!assert_equals_bool("d", false, is_head('d'))) {
+    return false;
+  }
+
+  if (!assert_equals_bool("^", false, is_head('^'))) {
+    return false;
+  }
+  if (!assert_equals_bool("<", false, is_head('<'))) {
+    return false;
+  }
+  if (!assert_equals_bool("v", false, is_head('v'))) {
+    return false;
+  }
+  if (!assert_equals_bool(">", false, is_head('>'))) {
+    return false;
+  }
+
   return true;
 }
 
 bool test_is_snake() {
   // TODO: Implement this function.
+  if (!assert_equals_bool("W", true, is_snake('W'))) {
+    return false;
+  }
+  if (!assert_equals_bool("A", true, is_snake('A'))) {
+    return false;
+  }
+  if (!assert_equals_bool("S", true, is_snake('S'))) {
+    return false;
+  }
+  if (!assert_equals_bool("D", true, is_snake('D'))) {
+    return false;
+  }
+
+  if (!assert_equals_bool("w", true, is_snake('w'))) {
+    return false;
+  }
+  if (!assert_equals_bool("a", true, is_snake('a'))) {
+    return false;
+  }
+  if (!assert_equals_bool("s", true, is_snake('s'))) {
+    return false;
+  }
+  if (!assert_equals_bool("d", true, is_snake('d'))) {
+    return false;
+  }
+
+  if (!assert_equals_bool("^", true, is_snake('^'))) {
+    return false;
+  }
+  if (!assert_equals_bool("<", true, is_snake('<'))) {
+    return false;
+  }
+  if (!assert_equals_bool("v", true, is_snake('v'))) {
+    return false;
+  }
+  if (!assert_equals_bool(">", true, is_snake('>'))) {
+    return false;
+  }
+
+  if (!assert_equals_bool("x", true, is_snake('x'))) {
+    return false;
+  }
+
   return true;
 }
 
 bool test_body_to_tail() {
   // TODO: Implement this function.
+  if (!assert_equals_char("w", 'w', body_to_tail('^'))) {
+    return false;
+  }
+  if (!assert_equals_char("a", 'a', body_to_tail('<'))) {
+    return false;
+  }
+  if (!assert_equals_char("s", 's', body_to_tail('v'))) {
+    return false;
+  }
+  if (!assert_equals_char("d", 'd', body_to_tail('>'))) {
+    return false;
+  }
+
   return true;
 }
 
 bool test_head_to_body() {
   // TODO: Implement this function.
+  if (!assert_equals_char("W", '^', head_to_body('W'))) {
+    return false;
+  }
+  if (!assert_equals_char("A", '<', head_to_body('A'))) {
+    return false;
+  }
+  if (!assert_equals_char("S", 'v', head_to_body('S'))) {
+    return false;
+  }
+  if (!assert_equals_char("D", '>', head_to_body('D'))) {
+    return false;
+  }
+
   return true;
 }
 
 bool test_get_next_row() {
   // TODO: Implement this function.
+  if (!assert_equals_int("v", 5, get_next_row(4, 'v'))) {
+    return false;
+  }
+  if (!assert_equals_int("s", 5, get_next_row(4, 's'))) {
+    return false;
+  }
+  if (!assert_equals_int("S", 5, get_next_row(4, 'S'))) {
+    return false;
+  }
+
+  if (!assert_equals_int("^", 5, get_next_row(6, '^'))) {
+    return false;
+  }
+  if (!assert_equals_int("w", 5, get_next_row(6, 'w'))) {
+    return false;
+  }
+  if (!assert_equals_int("W", 5, get_next_row(6, 'W'))) {
+    return false;
+  }
+
+  if (!assert_equals_int("<", 5, get_next_row(5, '<'))) {
+    return false;
+  }
+  if (!assert_equals_int("a", 5, get_next_row(5, 'a'))) {
+    return false;
+  }
+  if (!assert_equals_int("A", 5, get_next_row(5, 'A'))) {
+    return false;
+  }
+
+  if (!assert_equals_int(">", 5, get_next_row(5, '>'))) {
+    return false;
+  }
+  if (!assert_equals_int("d", 5, get_next_row(5, 'd'))) {
+    return false;
+  }
+  if (!assert_equals_int("D", 5, get_next_row(5, 'D'))) {
+    return false;
+  }
+
   return true;
 }
 
 bool test_get_next_col() {
   // TODO: Implement this function.
+  if (!assert_equals_int("v", 5, get_next_col(5, 'v'))) {
+    return false;
+  }
+  if (!assert_equals_int("s", 5, get_next_col(5, 's'))) {
+    return false;
+  }
+  if (!assert_equals_int("S", 5, get_next_col(5, 'S'))) {
+    return false;
+  }
+
+  if (!assert_equals_int("^", 5, get_next_col(5, '^'))) {
+    return false;
+  }
+  if (!assert_equals_int("w", 5, get_next_col(5, 'w'))) {
+    return false;
+  }
+  if (!assert_equals_int("W", 5, get_next_col(5, 'W'))) {
+    return false;
+  }
+
+  if (!assert_equals_int("<", 4, get_next_col(5, '<'))) {
+    return false;
+  }
+  if (!assert_equals_int("a", 4, get_next_col(5, 'a'))) {
+    return false;
+  }
+  if (!assert_equals_int("A", 4, get_next_col(5, 'A'))) {
+    return false;
+  }
+
+  if (!assert_equals_int(">", 6, get_next_col(5, '>'))) {
+    return false;
+  }
+  if (!assert_equals_int("d", 6, get_next_col(5, 'd'))) {
+    return false;
+  }
+  if (!assert_equals_int("D", 6, get_next_col(5, 'D'))) {
+    return false;
+  }
+  
   return true;
 }
 
