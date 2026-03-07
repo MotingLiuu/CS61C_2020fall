@@ -314,7 +314,7 @@ static void update_tail(game_t *game, unsigned int snum) {
 
   cur_tail_row = game->snakes[snum].tail_row;
   cur_tail_col = game->snakes[snum].tail_col;
-  tail_char = get_board_at(game, cur_tail_row, cur_tail_row);
+  tail_char = get_board_at(game, cur_tail_row, cur_tail_col);
 
   next_tail_row = get_next_row(cur_tail_row, tail_char);
   next_tail_col = get_next_col(cur_tail_col, tail_char);
@@ -352,7 +352,7 @@ void update_game(game_t *game, int (*add_food)(game_t *game)) {
 /* Task 5.1 */
 char *read_line(FILE *fp) {
   // TODO: Implement this function.
-  int MAXLEN = 1000;
+  int MAXLEN = 1000000;
   char *line = (char *)malloc(MAXLEN * sizeof(char));
   if (line == NULL) return NULL;
 
@@ -371,7 +371,7 @@ char *read_line(FILE *fp) {
 /* Task 5.2 */
 game_t *load_board(FILE *fp) {
   // TODO: Implement this function.
-  int MAXROWS = 1000;
+  int MAXROWS = 1000000;
   game_t *game = (game_t *)malloc(sizeof(game_t));
   char **board = (char **)malloc(MAXROWS * sizeof(char *));
   
@@ -457,10 +457,13 @@ game_t *initialize_snakes(game_t *game) {
       }
     }
   }
-  
-  snake_t *new_snakes = (snake_t *)realloc(snakes, num_snakes * sizeof(snake_t));
-  if (NULL != new_snakes)
+  if (num_snakes) {
+    snake_t *new_snakes = (snake_t *)realloc(snakes, num_snakes * sizeof(snake_t));
+    if (NULL != new_snakes)
     snakes = new_snakes;
+  } else {
+    snakes = NULL;
+  }
   
   game->snakes = snakes;
   game->num_snakes = num_snakes;
