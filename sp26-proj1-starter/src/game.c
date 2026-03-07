@@ -118,7 +118,10 @@ static void set_board_at(game_t *game, unsigned int row, unsigned int col, char 
 */
 static bool is_tail(char c) {
   // TODO: Implement this function.
-  return true;
+  if (c == 'w' || c == 'a' || c == 's' || c == 'd') {
+    return true;
+  }
+  return false;
 }
 
 /*
@@ -128,7 +131,10 @@ static bool is_tail(char c) {
 */
 static bool is_head(char c) {
   // TODO: Implement this function.
-  return true;
+  if (c == 'W' || c == 'A' || c == 'S' || c == 'D' || c == 'x') {
+    return true;
+  }
+  return false;
 }
 
 /*
@@ -137,7 +143,10 @@ static bool is_head(char c) {
 */
 static bool is_snake(char c) {
   // TODO: Implement this function.
-  return true;
+  if (is_tail(c) || is_head(c) || c == '^' || c == '<' || c == 'v' || c == '>') {
+    return true;
+  }
+  return false;
 }
 
 /*
@@ -147,6 +156,20 @@ static bool is_snake(char c) {
 */
 static char body_to_tail(char c) {
   // TODO: Implement this function.
+  switch (c) {
+    case '^':
+      return 'w';
+      break;
+    case '<':
+      return 'a';
+      break;
+    case 'v':
+      return 's';
+      break;
+    case '>':
+      return 'd';
+      break;
+  }
   return '?';
 }
 
@@ -157,6 +180,20 @@ static char body_to_tail(char c) {
 */
 static char head_to_body(char c) {
   // TODO: Implement this function.
+  switch (c) {
+    case 'W':
+      return '^';
+      break;
+    case 'A':
+      return '<';
+      break;
+    case 'S':
+      return 'v';
+      break;
+    case 'D':
+      return '>';
+      break;
+  }
   return '?';
 }
 
@@ -167,6 +204,20 @@ static char head_to_body(char c) {
 */
 static unsigned int get_next_row(unsigned int cur_row, char c) {
   // TODO: Implement this function.
+  switch (c) {
+    case 'v':
+      return cur_row + 1;
+    case 's':
+      return cur_row + 1;
+    case 'S':
+      return cur_row + 1;
+    case '^':
+      return cur_row - 1;
+    case 'w':
+      return cur_row - 1;
+    case 'W':
+      return cur_row - 1;
+  }
   return cur_row;
 }
 
@@ -177,6 +228,20 @@ static unsigned int get_next_row(unsigned int cur_row, char c) {
 */
 static unsigned int get_next_col(unsigned int cur_col, char c) {
   // TODO: Implement this function.
+  switch (c) {
+    case '>':
+      return cur_col + 1;
+    case 'd':
+      return cur_col + 1;
+    case 'D':
+      return cur_col + 1;
+    case '<':
+      return cur_col - 1;
+    case 'a':
+      return cur_col - 1;
+    case 'A':
+      return cur_col - 1;
+  }
   return cur_col;
 }
 
