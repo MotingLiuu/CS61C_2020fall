@@ -399,7 +399,7 @@ game_t *load_board(FILE *fp) {
   game->num_rows = row;
   game->board = board;
   game->num_snakes = 0;
-  game->snakes = 0;
+  game->snakes = NULL;
   
   return game;
 }
@@ -414,11 +414,60 @@ game_t *load_board(FILE *fp) {
 */
 static void find_head(game_t *game, unsigned int snum) {
   // TODO: Implement this function.
+  unsigned tail_row, tail_col, next_row, next_col;
+  char next_char;
+  tail_row = game->snakes[snum].tail_row;
+  tail_col = game->snakes[snum].tail_col;
+  
+  next_row = tail_row;
+  next_col = tail_col;
+  next_char = get_board_at(game, tail_row, tail_col);
+  while (1) {
+    next_row = get_next_row(next_row, next_char);
+    next_col = get_next_col(next_col, next_char);
+    next_char = get_board_at(game, next_row, next_col);
+    
+    if (next_char == 'W' || next_char == 'A' || next_char == 'S' || next_char == 'D' || next_char == 'x') 
+      break;
+  }
+  
+  game->snakes[snum].head_row = next_row;
+  game->snakes[snum].head_col = next_col;
+
   return;
 }
 
 /* Task 6.2 */
 game_t *initialize_snakes(game_t *game) {
   // TODO: Implement this function.
-  return NULL;
+  int MAXNUM = 1000;
+  int num_snakes = 0;
+  snake_t *snakes = (snake_t *)malloc(MAXNUM * sizeof(snake_t));
+  if (NULL == snakes)
+    return NULL;
+  
+  char cur_char;
+  for (int i = 0; i < game->num_rows; i++) {
+    for (int j = 0; (cur_char = game->board[i][j]) != '\0'; j++) {
+      if (cur_char == 'w' || cur_char == 'a' || cur_char == 's' || cur_char == 'd') {
+        snakes[num_snakes].live = true;
+        snakes[num_snakes].tail_row = i;
+        snakes[num_snakes].tail_col = j;
+        num_snakes++;
+      }
+    }
+  }
+  
+  snake_t *new_snakes = (snake_t *)realloc(snakes, num_snakes * sizeof(snake_t));
+  if (NULL != new_snakes)
+    snakes = new_snakes;
+  
+  game->snakes = snakes;
+  game->num_snakes = num_snakes;
+
+  for (int i = 0; i < game->num_snakes; i++) {
+    find_head(game, i);
+  }
+  
+  return game;
 }
