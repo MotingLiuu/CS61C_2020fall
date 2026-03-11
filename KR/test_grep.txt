@@ -1,0 +1,7 @@
+Hello, world!
+Would you like to learn programming?
+How about Python?
+if you want to learn Python, you can start with the basics.
+I love programming and Python is one of my favorite languages.
+For more information, you can visit the official Python website.
+stack overflow is a great resource for programming questions.
