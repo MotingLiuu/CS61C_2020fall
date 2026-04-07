@@ -10,8 +10,9 @@ main:
     mv t0 a0   # the pointer is returned in a0
 
     # Fill the array with 0's
-    li t1 0  # t1 is the index
+    li t1 1  # t1 is the index
     li t2 10 # t2 is the size of the array
+    mv t3 t0
 
 loop:
     # Store 0 at the current index
@@ -23,6 +24,10 @@ loop:
     # Check if we are done
     # If not, loop
     bge t2 t1 loop
+    
+    # free the memo
+    mv a0 t3
+    jal free
 
     # Exit the program
     li a0 0
