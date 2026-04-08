@@ -9,10 +9,15 @@
 #   None
 # =================================================================
 abs:
-    # Prologue
-
-    # PASTE HERE
-
-    # Epilogue
-
+    # load number from memo
+    lw t0 0(a0)
+    blt x0, t0, done
+    
+    # negate a0
+    sub t0, x0, t0
+    # store number back to memo
+    sw t0 0(a0)
+    
+done:
     jr ra
+    
