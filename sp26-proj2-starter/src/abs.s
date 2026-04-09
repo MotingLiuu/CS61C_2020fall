@@ -16,7 +16,7 @@ abs:
     # negate a0
     sub t0, x0, t0
     # store number back to memo
-    sw t0 4(a0)
+    sw t0 0(a0)
     
 done:
     jr ra
