@@ -16,15 +16,30 @@
 # =================================================================
 argmax:
     # Prologue
-
+    bge x0 a1 malformed
+    li t0 0
+    lw t1 0(a0)
+    li t2 0
 
 loop_start:
-
+    blt t0 a1 loop_continue
+    j loop_end
 
 loop_continue:
-
+    lw t3 0(a0)
+    addi t0 t0 1
+    addi a0 a0 4
+    bge t1 t3 loop_start
+    mv t1 t3
+    mv t2 t0
+    addi t2 t2 -1
+    j loop_start
 
 loop_end:
     # Epilogue
-
+    mv a0 t2
     jr ra
+
+malformed:
+    li a0 36
+    j exit
