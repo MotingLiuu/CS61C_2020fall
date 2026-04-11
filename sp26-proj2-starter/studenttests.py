@@ -168,27 +168,35 @@ class TestZeroOneLoss(unittest.TestCase):
     def test_simple(self):
         # load the test for zero_one_loss.s
         t = AssemblyTest(self, "../coverage-src/zero_one_loss.s")
-
-        raise NotImplementedError("TODO")
-
         # create input arrays in the data section
-        # TODO
+        array0 = t.array([0, 1, 2, 3])
+        array1 = t.array([0, 2, 1, 3])
+        array2 = t.array([-1, -1, -1, -1])
         # load array addresses into argument registers
-        # TODO
+        t.input_array("a0", array0)
+        t.input_array("a1", array1)
+        t.input_array("a3", array2)
         # load array length into argument register
-        # TODO
-        # create a result array in the data section (fill values with -1)
-        # TODO
-        # load result array address into argument register
+        t.input_scalar("a2", 4)
         # TODO
         # call the `zero_one_loss` function
+        t.call("zero_one_loss")
         # TODO
         # check that the result array contains the correct output
+        t.check_array(array2, [0, 1, 1, 0])
         # TODO
-        # generate the `assembly/TestZeroOneLoss_test_simple.s` file and run it through venus
-        # TODO
+        t.execute()
 
     # Add other test cases if neccesary
+    def test_len_0(self):
+        t = AssemblyTest(self, "../coverage-src/zero_one_loss.s")
+        array0 = t.array([])
+        array1 = t.array([])
+        t.input_array("a0", array0)
+        t.input_array("a1", array1)
+        t.input_scalar("a2", 0)
+        t.call("zero_one_loss")
+        t.execute(code=36)
 
     @classmethod
     def tearDownClass(cls):
