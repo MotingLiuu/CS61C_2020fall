@@ -183,7 +183,7 @@ class TestZeroOneLoss(unittest.TestCase):
         t.call("zero_one_loss")
         # TODO
         # check that the result array contains the correct output
-        t.check_array(array2, [0, 1, 1, 0])
+        t.check_array(array2, [1, 0, 0, 1])
         # TODO
         t.execute()
 
@@ -223,18 +223,30 @@ initialize_zero
 class TestInitializeZero(unittest.TestCase):
     def test_simple(self):
         t = AssemblyTest(self, "../coverage-src/initialize_zero.s")
-
-        raise NotImplementedError("TODO")
-
         # input the length of the desired array
         # TODO
+        t.input_scalar("a0", 5)
         # call the `initialize_zero` function
         # TODO
+        t.call("initialize_zero")
         # check that the register a0 contains the correct array (hint: look at the check_array_pointer function in framework.py)
         # TODO
+        t.check_array_pointer("a0", [0, 0, 0, 0, 0])
         t.execute()
 
     # Add other test cases if neccesary
+    def test_len_0(self):
+        t = AssemblyTest(self, "../coverage-src/initialize_zero.s")
+        t.input_scalar("a0", 0)
+        t.call("initialize_zero")
+        t.execute(code=36)
+    
+    def test_fail_malloc(self):
+        t = AssemblyTest(self, "../coverage-src/initialize_zero.s")
+        t.input_scalar("a0", 2147483647)
+        t.call("initialize_zero")
+        t.execute(code=26)
+
 
     @classmethod
     def tearDownClass(cls):
