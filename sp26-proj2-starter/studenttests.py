@@ -103,30 +103,41 @@ class TestSquaredLoss(unittest.TestCase):
     def test_simple(self):
         # load the test for squared_loss.s
         t = AssemblyTest(self, "../coverage-src/squared_loss.s")
-
-        raise NotImplementedError("TODO")
-
         # TODO
         # create input arrays in the data section
+        array0 = t.array([0, 1, 2, 3])
+        array1 = t.array([0, 0, 3, 3])
+        array2 = t.array([-1, -1, -1, -1])
         # TODO
         # load array addresses into argument registers
+        t.input_array("a0", array0)
+        t.input_array("a1", array1)
+        t.input_array("a3", array2)
         # TODO
-        # load array length into argument register
-        # TODO
-        # create a result array in the data section (fill values with -1)
-        # TODO
-        # load result array address into argument register
+        t.input_scalar("a2", 4)
         # TODO
         # call the `squared_loss` function
+        t.call("squared_loss")
         # TODO
         # check that the result array contains the correct output
+        t.check_array(array2, [0, 1, 1, 0])
         # TODO
         # check that the register a0 contains the correct output
+        t.check_scalar("a0", 2)
         # TODO
         # generate the `assembly/TestSquaredLoss_test_simple.s` file and run it through venus
-        # TODO
+        t.execute()
 
     # Add other test cases if neccesary
+    def test_len_0(self):
+        t = AssemblyTest(self, "../coverage-src/squared_loss.s")
+        array0 = t.array([])
+        array1 = t.array([])
+        t.input_array("a0", array0)
+        t.input_array("a1", array1)
+        t.input_scalar("a2", 0)
+        t.call("squared_loss")
+        t.execute(code=36)
 
     @classmethod
     def tearDownClass(cls):
