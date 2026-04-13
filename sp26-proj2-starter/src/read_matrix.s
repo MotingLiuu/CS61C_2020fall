@@ -27,7 +27,7 @@
 read_matrix:
 
     # Prologue
-    addi sp sp -44
+    addi sp sp -28
     sw ra 0(sp)
     sw s1 4(sp)
     sw s2 8(sp)
@@ -35,10 +35,6 @@ read_matrix:
     sw s4 16(sp)
     sw s5 20(sp)
     sw s6 24(sp)
-    sw s7 28(sp)
-    sw s8 32(sp)
-    sw s9 36(sp)
-    sw s10 40(sp)
     
     # open the matrix file for reading
         # save the address to edit after reading of the matrix
@@ -121,11 +117,7 @@ read_matrix:
     lw s4 16(sp)
     lw s5 20(sp)
     lw s6 24(sp)
-    lw s7 28(sp)
-    lw s8 32(sp)
-    lw s9 36(sp)
-    lw s10 40(sp)
-    addi sp sp 44
+    addi sp sp 28
 
     jr ra
 
