@@ -103,4 +103,3 @@ outer_loop_end:
 
 malformed:
     li a0 38
-    j exit
