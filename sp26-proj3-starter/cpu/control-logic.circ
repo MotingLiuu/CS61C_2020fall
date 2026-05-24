@@ -332,7 +332,7 @@
       <a name="width" val="5"/>
     </comp>
     <comp lib="0" loc="(220,700)" name="Constant">
-      <a name="value" val="0xf"/>
+      <a name="value" val="0x8"/>
       <a name="width" val="5"/>
     </comp>
     <comp lib="0" loc="(220,740)" name="Constant">
