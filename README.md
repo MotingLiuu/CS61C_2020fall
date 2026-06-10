@@ -84,7 +84,6 @@ CS61C_2020fall/
 | Project 1 (Snek) | 1 / 1 | ✅ |
 | Project 2 (SIMD) | 1 / 1 | ✅ |
 | Project 3 (CPU) | single-cycle + pipelined | ✅ |
-| FA20 Steganography | 1 / 1 | ✅ |
 | K&R / C-book exercises | many | ✅ |
 
 ---
