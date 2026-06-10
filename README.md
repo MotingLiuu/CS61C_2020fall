@@ -54,12 +54,6 @@ CS61C_2020fall/
 │       ├── mem.circ               # Memory
 │       └── cpu.circ               # Single-cycle CPU → then pipelined
 │
-├── fa20-proj1-starter/            # FA20 Project 1: image steganography
-│   ├── imageloader.{c,h}          # PPM image loader
-│   ├── steganography.c            # LSB encode / decode
-│   ├── gameoflife.c               # Conway's Game of Life (FA20 extra)
-│   └── testInputs / testOutputs
-│
 ├── CS61C_basics/                  # Original course basics (lecture + lab)
 │   └── lab00–lab11
 │
