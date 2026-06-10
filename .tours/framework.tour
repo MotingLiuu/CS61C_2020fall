@@ -1,0 +1,17 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "framework",
+  "steps": [
+    {
+      "file": "sp26-proj2-starter/framework.py",
+      "description": "Run a .s file located at _venus_path",
+      "line": 26
+    },
+    {
+      "file": "sp26-proj2-starter/framework.py",
+      "description": "return the result of venus and the content of coverage file",
+      "line": 51
+    }
+  ],
+  "ref": "main"
+}

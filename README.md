@@ -76,10 +76,6 @@ CS61C_2020fall/
 │
 ├── example/                       # Ad-hoc in-class / self-study snippets
 │
-├── notes/                         # Personal study notes + textbook PDFs
-│   ├── C_Book_2nd.pdf
-│   └── Computer Organization and Design, 5ed.pdf
-│
 └── Untitled                       # Scratchpad
 ```
 
@@ -96,21 +92,6 @@ CS61C_2020fall/
 | Project 3 (CPU) | single-cycle + pipelined | ✅ |
 | FA20 Steganography | 1 / 1 | ✅ |
 | K&R / C-book exercises | many | ✅ |
-
-**Project 3 build order (from the commit log):**
-
-```
-regfile.circ
-alu.circ
-branch comp
-control for I-type
-I-type / R-type / B-type / J-type
-ImmGen / lui
-partial-load / partial-store
-single-cycle CPU
-+ pipeline
-SIMD
-```
 
 ---
 
@@ -143,15 +124,6 @@ python3 studenttests.py     # your own tests
 ### Project 3 — Logisim CPU
 1. Install [Logisim Evolution](https://github.com/logisim-evolution/logisim-evolution)
 2. Open `sp26-proj3-starter/cpu/cpu.circ`
-3. Drive it with the harnesses under `harnesses/`
-
-### FA20 — Steganography
-```bash
-cd fa20-proj1-starter
-make
-./imageloadertester testInputs/1.ppm stego.ppm encoded.txt
-./imageloadertester testInputs/1.ppm stego.ppm decoded.txt
-```
 
 ---
 
