@@ -7,7 +7,7 @@ CORE_OBJS = $(CORE_SRCS:.c=.o) # suffix replacement, replace .c with .o
 APP_MAIN = src/main.c 
 APP_TARGET = app
 
-TEST_MAIN = src/test.c 
+TEST_MAIN = tests/test.c 
 TEST_TARGET = run_test
 
 .PHONY: all clean test
