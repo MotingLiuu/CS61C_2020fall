@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "utils.h"
 #include <stdbool.h>
 #include <ctype.h>
@@ -35,7 +36,7 @@ int pop() {
     }
 }
 
-char getch() {
+int getch() {
     int c;
     if (empty()) {
         c = getchar();
@@ -80,4 +81,39 @@ int get_token(void) {
         return tokentype = c;
 }
 
+void dcl(void) {
+    int ns = 0;
+    while (get_token() == '*') {
+        ns++;
+    }
+    dirdcl();
+    for (;ns > 0;ns--) {
+        strcat(out, "Pointer to ");
+    }
+}
+
+void dirdcl(void) {
+    int type;
+    if (tokentype == '(') {
+        dcl();
+        if (tokentype != ')') {
+            printf("Error: expected ')'\n");
+            exit(1);
+        }
+    } else if (tokentype == NAME) {
+        strcpy(name, token);
+    } else {
+        printf("Expected (dcl) or name\n");
+        exit(1);
+    }
+    while ((type = get_token()) == PARENS || type == BRACKETS) {
+        if (type == PARENS) {
+            strcat(out, "function returning ");
+        } else {
+            strcat(out, " array");
+            strcat(out, token);
+            strcat(out, " of ");
+        }
+    }
+}
 

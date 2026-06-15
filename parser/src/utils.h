@@ -18,8 +18,7 @@ int push(char c);
 int pop();
 bool empty(void);
 
-
-char getch(void);
+int getch(void);
 void ungetch(char c);
 
 
