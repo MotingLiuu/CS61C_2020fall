@@ -81,30 +81,32 @@ int get_token(void) {
         return tokentype = c;
 }
 
-void dcl(void) {
+int dcl(void) {
     int ns = 0;
     while (get_token() == '*') {
         ns++;
     }
-    dirdcl();
+    if (dirdcl() == -1) 
+        return -1;
     for (;ns > 0;ns--) {
         strcat(out, "Pointer to ");
     }
+    return 0;
 }
 
-void dirdcl(void) {
+int dirdcl(void) {
     int type;
     if (tokentype == '(') {
         dcl();
         if (tokentype != ')') {
             printf("Error: expected ')'\n");
-            exit(1);
+            return -1;
         }
     } else if (tokentype == NAME) {
         strcpy(name, token);
     } else {
         printf("Expected (dcl) or name\n");
-        exit(1);
+        return -1;
     }
     while ((type = get_token()) == PARENS || type == BRACKETS) {
         if (type == PARENS) {
@@ -115,5 +117,14 @@ void dirdcl(void) {
             strcat(out, " of ");
         }
     }
+    if (tokentype != '\n') {
+        return -1;
+    }
 }
 
+int reset() {
+    while (getch() != '\n' && getch() != EOF)
+        ;
+    out[0] = '\0';
+    return 0;
+}

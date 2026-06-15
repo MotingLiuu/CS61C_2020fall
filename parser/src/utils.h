@@ -4,8 +4,8 @@
 
 enum {NAME, PARENS, BRACKETS};
 
-void dcl(void);
-void dirdcl(void);
+int dcl(void);
+int dirdcl(void);
 
 int get_token(void);
 int tokentype; // type of last token
@@ -21,5 +21,6 @@ bool empty(void);
 int getch(void);
 void ungetch(char c);
 
+int reset();
 
 
