@@ -14,12 +14,12 @@ char name[MAXTOKEN]; // identifier name
 char datatype[MAXTOKEN]; // data type = char, int, etc
 char out[1000];
 
-int push(char c);
+int push(int c);
 int pop();
 bool empty(void);
 
 int getch(void);
-void ungetch(char c);
+void ungetch(int c);
 
 int reset();
 

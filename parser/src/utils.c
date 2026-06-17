@@ -7,7 +7,7 @@
 
 #define MAX_BUFFER_SIZE 100
 
-char buffer[MAX_BUFFER_SIZE];
+int buffer[MAX_BUFFER_SIZE];
 int buf_ptr = 0;
 
 bool empty() {
@@ -18,7 +18,7 @@ bool empty() {
     }
 }
 
-int push(char c) {
+int push(int c) {
     if (buf_ptr < MAX_BUFFER_SIZE) {
         buffer[buf_ptr++] = c;
     } else {
@@ -50,7 +50,7 @@ int getch() {
     return c;
 }
 
-void ungetch(char c) {
+void ungetch(int c) {
     push(c);
 }
 
@@ -98,7 +98,10 @@ int dcl(void) {
 int dirdcl(void) {
     int type;
     if (tokentype == '(') {
-        dcl();
+        if (dcl() == -1) {
+            printf("Error: Failed to parse sub-dcl\n");
+            return -1;
+        }
         if (tokentype != ')') {
             printf("Error: expected ')'\n");
             return -1;
