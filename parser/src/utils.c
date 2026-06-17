@@ -117,13 +117,11 @@ int dirdcl(void) {
             strcat(out, " of ");
         }
     }
-    if (tokentype != '\n') {
-        return -1;
-    }
 }
 
 int reset() {
-    while (getch() != '\n' && getch() != EOF)
+    char c;
+    while ((c = getch()) != '\n' && c != EOF)
         ;
     out[0] = '\0';
     return 0;
