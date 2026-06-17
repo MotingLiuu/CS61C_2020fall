@@ -25,6 +25,7 @@ int push(char c) {
         printf("Error: buffer is full\n");
         return -1;
     }
+    return 0;
 }
 
 int pop() {
@@ -117,10 +118,11 @@ int dirdcl(void) {
             strcat(out, " of ");
         }
     }
+    return 0;
 }
 
 int reset() {
-    char c;
+    int c;
     while ((c = getch()) != '\n' && c != EOF)
         ;
     out[0] = '\0';
